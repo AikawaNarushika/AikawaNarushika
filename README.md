@@ -1,9 +1,3 @@
-<!--
-  使用说明（GitHub 不渲染 HTML 注释）
-  1. 头像直接引用 GitHub 头像，无需额外上传
-  2. 把占位的 agent-runtime / search-platform / ops-console 换成你的真实仓库地址
-  3. VISITORS badge 依赖 komarev.com，如不想依赖第三方可整行删除
--->
 
 <div align="center">
 
@@ -54,6 +48,7 @@ status      : ONLINE — turning internal Java services into agent-callable tool
 
 **delivery**
 ![Vue](https://img.shields.io/badge/Vue_3-4FC08D?style=flat-square&logo=vuedotjs&logoColor=white)
+![Python](https://img.shields.io/badge/Python_3.8+-3776AB?style=flat-square&logo=python&logoColor=white)
 ![Docker](https://img.shields.io/badge/Docker-2496ED?style=flat-square&logo=docker&logoColor=white)
 ![CI](https://img.shields.io/badge/CI/CD-0d1117?style=flat-square&logo=githubactions&logoColor=white)
 
@@ -71,12 +66,12 @@ stack
 
 ## `$ ls ~/projects`
 
-### [agent-runtime](https://github.com/AikawaNarushika/agent-runtime) — self-built agent orchestration + Function Call
+### agent-runtime `[private]` — autonomous planning agent, self-built
 
 ```bash
-$ head -4 agent-runtime/README.md
-self-built orchestration, no framework magic:
-  plan -> select tool -> function call -> observe -> retry
+$ stat agent-runtime
+visibility : private · closed source
+paradigm   : autonomous planning + Function Call
 ```
 
 - **Four decoupled layers**: `Planner` / `Tool Registry` / `Executor` / `Memory`, each replaceable
@@ -84,17 +79,22 @@ self-built orchestration, no framework magic:
 - **Execution guardrails**: tool whitelist, argument validation, timeout, circuit breaking, idempotent replay
 - **Observable by default**: one Trace ID flows through `Agent → Tool → Service`, every call replayable
 
-### [search-platform](https://github.com/AikawaNarushika/search-platform) — Elasticsearch retrieval platform
+Source stays private; architecture notes available on request.
 
-- Index aliases + dual-write switching → **zero-downtime** reindexing
-- Custom CJK analyzer for better Chinese recall
-- Search **p99: 300ms → 80ms**
+### [smart-memo-assistant](https://github.com/AikawaNarushika/smart-memo-assistant) `[open source · MIT]` — plain-text personal memory system
 
-### [ops-console](https://github.com/AikawaNarushika/ops-console) — full-stack delivery
+```bash
+$ head -2 smart-memo-assistant/README.md
+你说人话，它替你记事、归档、到期提醒
+plain text in, structured memory out
+```
 
-- Spring Boot services sustaining **5K RPS**
-- Vue 3 console with real-time metrics and service orchestration
-- Redis cache layer cutting DB load by **40%**
+- **Python 3.8+ · standard library only** — zero dependencies, runs anywhere
+- Turns raw words into structured memos: type / priority / due date / tags / entities / backlinks
+- Multi-dimension retrieval, daily-weekly-monthly reviews, due reminders, idea pool, suspended items
+- Calendar in HTML / terminal ASCII / `.ics`, one color per entity
+- Auto git commit & push on write for multi-device sync; every index is rebuildable
+- Boundary, time-parsing and git test suites, plus artifact self-checks
 
 ---
 
@@ -104,8 +104,8 @@ self-built orchestration, no framework magic:
 {
   "role"        : "backend engineer",
   "status"      : "online",
-  "building"    : "agent-runtime",
-  "shipping"    : ["search-platform", "ops-console"],
+  "building"    : "agent-runtime (private)",
+  "shipping"    : ["smart-memo-assistant", "search-platform", "ops-console"],
   "open_to"     : ["backend architecture", "search engineering", "agent engineering"],
   "timezone"    : "UTC+8",
   "reply_within": "24h"
@@ -119,6 +119,7 @@ self-built orchestration, no framework magic:
 ```bash
 2026-11  agent observability   call traces · token cost · tool success rate
 2026-11  tool-ify retrieval    expose search as a standard agent tool
+2026-11  open source          smart-memo-assistant · issues · docs · releases
 2026-10  microservices         Spring Cloud splitting and governance
 2026-09  low-latency JVM       GC tuning and memory layout
 ```
