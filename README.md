@@ -1,3 +1,9 @@
+    <!--
+      使用说明（GitHub 不渲染 HTML 注释）
+      1. 头像直接引用 GitHub 头像，无需额外上传
+      2. 把占位的 agent-runtime / search-platform / ops-console 换成你的真实仓库地址
+      3. VISITORS badge 依赖 komarev.com，如不想依赖第三方可整行删除
+    -->
 
     <div align="center">
 
